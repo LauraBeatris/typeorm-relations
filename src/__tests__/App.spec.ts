@@ -142,7 +142,7 @@ describe('App', () => {
           name: 'Rocketseat',
           email: 'oi@rocketseat.com.br',
         }),
-        order_products: expect.arrayContaining([
+        orders_products: expect.arrayContaining([
           expect.objectContaining({
             product_id: product.body.id,
             price: '500.00',
@@ -296,7 +296,7 @@ describe('App', () => {
           name: 'Rocketseat',
           email: 'oi@rocketseat.com.br',
         }),
-        order_products: expect.arrayContaining([
+        orders_products: expect.arrayContaining([
           expect.objectContaining({
             product_id: product.body.id,
             price: '500.00',

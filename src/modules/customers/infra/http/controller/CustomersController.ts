@@ -13,7 +13,9 @@ export default class CustomersController {
   ): Promise<Response<Customer>> {
     const { name, email } = request.body;
 
-    if (!name || !email) {
+    const hasInvalidData = !name || !email;
+
+    if (hasInvalidData) {
       throw new AppError(
         'Please, provide valid data in order to create a customer',
       );
