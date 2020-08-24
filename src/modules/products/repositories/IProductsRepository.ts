@@ -1,5 +1,4 @@
 import Product from '@modules/products/infra/typeorm/entities/Product';
-
 import ICreateProductDTO from '@modules/products/dtos/ICreateProductDTO';
 import IUpdateProductsQuantityDTO from '@modules/products/dtos/IUpdateProductsQuantityDTO';
 

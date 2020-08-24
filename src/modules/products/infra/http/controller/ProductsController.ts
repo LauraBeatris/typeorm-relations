@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-
 import { container } from 'tsyringe';
+
 import CreateProductService from '@modules/products/services/CreateProductService';
 import AppError from '@shared/errors/AppError';
-import Product from '../../typeorm/entities/Product';
+import Product from '@modules/products/infra/typeorm/entities/Product';
 
 export default class ProductsController {
   public async create(
