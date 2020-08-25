@@ -22,9 +22,6 @@ class Order {
   @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
-  @Column('uuid')
-  customer_id: string;
-
   @OneToMany(() => OrdersProducts, ordersProducts => ordersProducts.order, {
     cascade: ['insert'],
   })
