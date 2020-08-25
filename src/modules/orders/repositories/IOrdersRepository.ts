@@ -1,6 +1,6 @@
-import Order from '../infra/typeorm/entities/Order';
+import Order from '@modules/orders/infra/typeorm/entities/Order';
 
-import ICreateOrderDTO from '../dtos/ICreateOrderDTO';
+import ICreateOrderDTO from '@modules/orders/dtos/ICreateOrderDTO';
 
 export default interface IOrdersRepository {
   create(data: ICreateOrderDTO): Promise<Order>;
