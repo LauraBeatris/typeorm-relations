@@ -1,5 +1,7 @@
 import 'reflect-metadata';
 
+import { errors as validationErrorsHandler } from 'celebrate';
+
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
@@ -17,6 +19,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+
+app.use(validationErrorsHandler());
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {
