@@ -86,7 +86,7 @@ class CreateOrderService {
       return {
         product_id: originalProduct.id,
         quantity: product.quantity,
-        price: product.quantity * originalProduct.price,
+        price: originalProduct.price,
       };
     });
 
