@@ -13,7 +13,7 @@ describe('App', () => {
   beforeAll(async () => {
     connection = await createConnection('test-connection');
 
-    await connection.query('DROP TABLE IF EXISTS orders_products');
+    await connection.query('DROP TABLE IF EXISTS order_products');
     await connection.query('DROP TABLE IF EXISTS orders');
     await connection.query('DROP TABLE IF EXISTS products');
     await connection.query('DROP TABLE IF EXISTS customers');
@@ -23,7 +23,7 @@ describe('App', () => {
   });
 
   beforeEach(async () => {
-    await connection.query('DELETE FROM orders_products');
+    await connection.query('DELETE FROM order_products');
     await connection.query('DELETE FROM orders');
     await connection.query('DELETE FROM products');
     await connection.query('DELETE FROM customers');
@@ -142,7 +142,7 @@ describe('App', () => {
           name: 'Rocketseat',
           email: 'oi@rocketseat.com.br',
         }),
-        orders_products: expect.arrayContaining([
+        order_products: expect.arrayContaining([
           expect.objectContaining({
             product_id: product.body.id,
             price: '500.00',
@@ -296,7 +296,7 @@ describe('App', () => {
           name: 'Rocketseat',
           email: 'oi@rocketseat.com.br',
         }),
-        orders_products: expect.arrayContaining([
+        order_products: expect.arrayContaining([
           expect.objectContaining({
             product_id: product.body.id,
             price: '500.00',
