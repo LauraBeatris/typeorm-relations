@@ -1,9 +1,11 @@
+import Order from '@modules/orders/infra/typeorm/entities/Order';
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
+  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity('customers')
@@ -17,6 +19,9 @@ class Customer {
 
   @Column()
   email: string;
+
+  @OneToMany(() => Order, order => order.customer)
+  order: Order;
 
   @CreateDateColumn()
   created_at: Date;

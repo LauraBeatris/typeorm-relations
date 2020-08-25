@@ -18,7 +18,7 @@ class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Customer)
+  @ManyToOne(() => Customer, customer => customer.order, { eager: true })
   @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
