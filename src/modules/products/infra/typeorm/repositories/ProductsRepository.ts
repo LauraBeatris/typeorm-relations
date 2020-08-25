@@ -4,6 +4,7 @@ import IProductsRepository from '@modules/products/repositories/IProductsReposit
 import ICreateProductDTO from '@modules/products/dtos/ICreateProductDTO';
 import IUpdateProductsQuantityDTO from '@modules/products/dtos/IUpdateProductsQuantityDTO';
 import Product from '@modules/products/infra/typeorm/entities/Product';
+import AppError from '@shared/errors/AppError';
 
 interface IFindProducts {
   id: string;
@@ -51,7 +52,28 @@ class ProductsRepository implements IProductsRepository {
   public async updateQuantity(
     updateProductsData: IUpdateProductsQuantityDTO[],
   ): Promise<Product[]> {
-    // TODO - Update Products
+    const productsIds = updateProductsData.map(product => product.id);
+
+    const findProducts = await this.ormRepository.findByIds(productsIds);
+
+    const updateProductsQuantity = findProducts.map(product => {
+      const findUpdateProduct = updateProductsData.find(
+        updateProduct => product.id === updateProduct.id,
+      );
+
+      if (!findUpdateProduct) {
+        throw new AppError('Product not found');
+      }
+
+      return this.ormRepository.save({
+        ...product,
+        quantity: product.quantity - findUpdateProduct?.quantity,
+      });
+    });
+
+    const products = await Promise.all(updateProductsQuantity);
+
+    return products;
   }
 }
 
