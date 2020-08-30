@@ -1,16 +1,15 @@
 import 'reflect-metadata';
+import 'express-async-errors';
 
+import express from 'express';
+import cors from 'cors';
 import { errors as validationErrorsHandler } from 'celebrate';
 
-import express, { Request, Response, NextFunction } from 'express';
-import 'express-async-errors';
-import cors from 'cors';
-
-import AppError from '@shared/errors/AppError';
 import createConnection from '@shared/infra/typeorm';
-import routes from './routes';
-
+import errorsHandler from '@shared/handlers/errorsHandler';
 import '@shared/container';
+
+import routes from './routes';
 
 createConnection();
 
@@ -21,21 +20,6 @@ app.use(express.json());
 app.use(routes);
 
 app.use(validationErrorsHandler());
-
-app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
-  if (err instanceof AppError) {
-    return response.status(err.statusCode).json({
-      status: 'error',
-      message: err.message,
-    });
-  }
-
-  console.log(err);
-
-  return response.status(500).json({
-    status: 'error',
-    message: 'Internal server error',
-  });
-});
+app.use(errorsHandler);
 
 export default app;
