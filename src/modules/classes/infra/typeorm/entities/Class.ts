@@ -1,8 +1,11 @@
+import Student from '@modules/students/infra/typeorm/entities/Student';
 import Teacher from '@modules/teachers/infra/typeorm/entities/Teacher';
 import {
   Entity,
   Column,
+  JoinTable,
   ManyToOne,
+  ManyToMany,
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
@@ -21,6 +24,10 @@ class Class {
 
   @CreateDateColumn()
   created_at: Date;
+
+  @ManyToMany(() => Student)
+  @JoinTable()
+  student: Student;
 
   @UpdateDateColumn()
   updated_at: Date;
