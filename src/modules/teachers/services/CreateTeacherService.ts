@@ -18,7 +18,9 @@ class CreateTeacherService {
   ) {}
 
   public async execute({ age, name, email }: IRequest): Promise<Teacher> {
-    const findTeacherWithSameEmail = this.teachersRepository.findByEmail(email);
+    const findTeacherWithSameEmail = await this.teachersRepository.findByEmail(
+      email,
+    );
 
     if (findTeacherWithSameEmail) {
       throw new AppError(

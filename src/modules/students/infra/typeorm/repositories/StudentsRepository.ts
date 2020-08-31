@@ -18,7 +18,7 @@ class StudentsRepository implements IStudentsRepository {
   }: ICreateStudentDTO): Promise<Student> {
     const student = this.ormRepository.create({ name, email, age });
 
-    this.ormRepository.save(student);
+    await this.ormRepository.save(student);
 
     return student;
   }

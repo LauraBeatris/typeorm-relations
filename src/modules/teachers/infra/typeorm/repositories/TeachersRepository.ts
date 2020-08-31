@@ -16,7 +16,7 @@ class TeachersRepository implements ITeachersRepository {
     name,
     email,
   }: ICreateTeacherDTO): Promise<Teacher> {
-    const teacher = this.ormRepository.create({ age, name, email });
+    const teacher = this.ormRepository.create({ name, email, age });
 
     await this.ormRepository.save(teacher);
 
