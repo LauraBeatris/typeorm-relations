@@ -20,10 +20,10 @@ class Student {
   @Column('integer')
   age: number;
 
-  @CreateDateColumn('timestamp')
+  @CreateDateColumn()
   created_at: Date;
 
-  @UpdateDateColumn('timestamp')
+  @UpdateDateColumn()
   updated_at: Date;
 }
 

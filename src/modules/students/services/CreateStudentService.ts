@@ -18,11 +18,11 @@ class CreateStudentService {
   ) {}
 
   public async execute({ age, name, email }: IRequest): Promise<Student> {
-    const findStudentWithSameName = await this.studentsRepository.findByEmail(
+    const findStudentWithSameEmail = await this.studentsRepository.findByEmail(
       email,
     );
 
-    if (findStudentWithSameName) {
+    if (findStudentWithSameEmail) {
       throw new AppError(
         "There's already a student registered with that email. Please, try it again with another email.",
       );
