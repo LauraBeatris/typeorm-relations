@@ -1,4 +1,4 @@
-import { Response, Request } from 'express';
+import { Response, Request, NextFunction } from 'express';
 
 import AppError from '@shared/errors/AppError';
 
@@ -14,6 +14,9 @@ const errorsHandler = (
       message: error.message,
     });
   }
+
+  // eslint-disable-next-line no-console
+  console.error(error);
 
   return response.status(500).json({
     status: 'error',
