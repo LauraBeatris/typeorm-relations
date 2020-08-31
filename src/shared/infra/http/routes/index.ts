@@ -5,6 +5,7 @@ import productsRouter from '@modules/products/infra/http/routes/products.routes'
 import ordersRouter from '@modules/orders/infra/http/routes/orders.routes';
 
 import studentsRouter from '@modules/students/infra/http/routes/students.routes';
+import teachersRouter from '@modules/teachers/infra/http/routes/teachers.routes';
 
 const routes = Router();
 
@@ -13,5 +14,6 @@ routes.use('/products', productsRouter);
 routes.use('/orders', ordersRouter);
 
 routes.use('/students', studentsRouter);
+routes.use('/teachers', teachersRouter);
 
 export default routes;
