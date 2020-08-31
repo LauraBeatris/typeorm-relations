@@ -8,6 +8,7 @@ import {
 
 @Entity('students')
 class Student {
+  @Column('uuid')
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
