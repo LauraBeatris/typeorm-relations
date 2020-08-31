@@ -1,10 +1,13 @@
 import {
   Entity,
   Column,
+  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
+import Class from '@modules/classes/infra/typeorm/entities/Class';
 
 @Entity('teachers')
 class Teacher {
@@ -16,6 +19,9 @@ class Teacher {
 
   @Column('uuid')
   age: number;
+
+  @OneToMany(() => Class, classRegister => classRegister.teacher)
+  classes: Class[];
 
   @CreateDateColumn()
   created_at: Date;

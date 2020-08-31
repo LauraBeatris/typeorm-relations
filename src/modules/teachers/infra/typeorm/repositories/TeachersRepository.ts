@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { ICreateTeacherDTO } from '@modules/teachers/dtos/ICreateTeacherDTO';
+import ICreateTeacherDTO from '@modules/teachers/dtos/ICreateTeacherDTO';
 import ITeachersRepository from '@modules/teachers/repositories/ITeachersRepository';
 import Teacher from '@modules/teachers/infra/typeorm/entities/Teacher';
 
@@ -25,6 +25,12 @@ class TeachersRepository implements ITeachersRepository {
 
   public async findByEmail(email: string): Promise<Teacher | undefined> {
     const teacher = await this.ormRepository.findOne({ where: { email } });
+
+    return teacher;
+  }
+
+  public async findById(id: string): Promise<Teacher | undefined> {
+    const teacher = await this.ormRepository.findOne(id);
 
     return teacher;
   }
