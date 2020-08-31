@@ -6,6 +6,7 @@ import {
   JoinTable,
   ManyToOne,
   ManyToMany,
+  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
@@ -13,6 +14,7 @@ import {
 
 @Entity('classes')
 class Class {
+  @Column('uuid')
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -20,6 +22,7 @@ class Class {
   subject: string;
 
   @ManyToOne(() => Teacher, teacher => teacher.classes)
+  @JoinColumn({ name: 'teacher_id' })
   teacher: Teacher;
 
   @CreateDateColumn()
@@ -27,7 +30,7 @@ class Class {
 
   @ManyToMany(() => Student)
   @JoinTable()
-  student: Student;
+  students: Student[];
 
   @UpdateDateColumn()
   updated_at: Date;
