@@ -24,9 +24,21 @@ class StudentsRepository implements IStudentsRepository {
   }
 
   public async findByEmail(email: string): Promise<Student | undefined> {
-    const student = this.ormRepository.findOne({ where: { email } });
+    const student = await this.ormRepository.findOne({ where: { email } });
 
     return student;
+  }
+
+  public async findOneOrFail(id: string): Promise<Student | undefined> {
+    const student = await this.ormRepository.findOneOrFail(id);
+
+    return student;
+  }
+
+  public async findByIds(data: string[]): Promise<Student[]> {
+    const students = await this.ormRepository.findByIds(data);
+
+    return students;
   }
 }
 

@@ -11,8 +11,16 @@ class ClassesRepository implements IClassesRepository {
     this.ormRepository = getRepository(Class);
   }
 
-  public async create({ subject, teacher }: ICreateClassDTO): Promise<Class> {
-    const createClass = this.ormRepository.create({ subject, teacher });
+  public async create({
+    subject,
+    teacher,
+    students,
+  }: ICreateClassDTO): Promise<Class> {
+    const createClass = this.ormRepository.create({
+      subject,
+      teacher,
+      student_classes: students,
+    });
 
     await this.ormRepository.save(createClass);
 

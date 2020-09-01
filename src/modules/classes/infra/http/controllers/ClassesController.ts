@@ -9,12 +9,13 @@ class ClassesController {
     request: Request,
     response: Response,
   ): Promise<Response<Class>> {
-    const { subject, teacher_id } = request.body;
+    const { subject, teacher_id, students } = request.body;
 
     const createClass = container.resolve(CreateClassService);
 
     const classRegister = await createClass.execute({
       subject,
+      students,
       teacher_id,
     });
 
