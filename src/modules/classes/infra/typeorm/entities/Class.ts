@@ -1,11 +1,10 @@
-import Student from '@modules/students/infra/typeorm/entities/Student';
+import StudentClasses from '@modules/students/infra/typeorm/entities/StudentClasses';
 import Teacher from '@modules/teachers/infra/typeorm/entities/Teacher';
 import {
   Entity,
   Column,
-  JoinTable,
   ManyToOne,
-  ManyToMany,
+  OneToMany,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
@@ -28,9 +27,10 @@ class Class {
   @CreateDateColumn()
   created_at: Date;
 
-  @ManyToMany(() => Student)
-  @JoinTable()
-  students: Student[];
+  @OneToMany(() => StudentClasses, studentClasses => studentClasses.class, {
+    cascade: ['insert'],
+  })
+  student_classes: StudentClasses[];
 
   @UpdateDateColumn()
   updated_at: Date;

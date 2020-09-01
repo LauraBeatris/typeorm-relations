@@ -1,10 +1,12 @@
 import {
   Entity,
   Column,
+  OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import StudentClasses from './StudentClasses';
 
 @Entity('students')
 class Student {
@@ -20,6 +22,9 @@ class Student {
 
   @Column('integer')
   age: number;
+
+  @OneToMany(() => StudentClasses, studentClasses => studentClasses.student)
+  student_classes: StudentClasses[];
 
   @CreateDateColumn()
   created_at: Date;
