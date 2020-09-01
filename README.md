@@ -108,7 +108,7 @@ Run the following command in order to start the application in a development env
 
 # :bug: Issues
 
-Feel free to **file a new issue** with a respective title and description on the the [TypeORM Relations](https://github.com/LauraBeatris/typeorm-relations/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**! Have a look at our [contribution guidelines](https://github.com/LauraBeatris/typeorm-relations/blob/master/CONTRIBUTING.md) to find out about the coding standards.
+Feel free to **file a new issue** with a respective title and description on the the [TypeORM Relations](https://github.com/LauraBeatris/typeorm-relations/issues) repository. If you already found a solution to your problem, **I would love to review your pull request**! Have a look at our [contribution guidelines](https://github.com/LauraBeatris/typeorm-relations/blob/master/CONTRIBUTING.md) to find out about the coding standards.
 
 # :tada: Contributing
 
