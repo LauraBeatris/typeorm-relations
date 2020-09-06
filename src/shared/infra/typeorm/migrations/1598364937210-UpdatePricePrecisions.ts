@@ -4,7 +4,7 @@ export default class UpdatePricePrecisions1598364937210
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.changeColumn(
-      'order_products',
+      'orders_products',
       'price',
       new TableColumn({
         name: 'price',
@@ -28,7 +28,7 @@ export default class UpdatePricePrecisions1598364937210
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.changeColumn(
-      'order_products',
+      'orders_products',
       'price',
       new TableColumn({
         name: 'price',

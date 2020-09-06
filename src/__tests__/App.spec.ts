@@ -17,6 +17,10 @@ describe('App', () => {
     await connection.query('DROP TABLE IF EXISTS orders');
     await connection.query('DROP TABLE IF EXISTS products');
     await connection.query('DROP TABLE IF EXISTS customers');
+    await connection.query('DROP TABLE IF EXISTS student_classes');
+    await connection.query('DROP TABLE IF EXISTS classes');
+    await connection.query('DROP TABLE IF EXISTS students');
+    await connection.query('DROP TABLE IF EXISTS teachers');
     await connection.query('DROP TABLE IF EXISTS migrations');
 
     await connection.runMigrations();
@@ -142,7 +146,7 @@ describe('App', () => {
           name: 'Rocketseat',
           email: 'oi@rocketseat.com.br',
         }),
-        order_products: expect.arrayContaining([
+        orders_products: expect.arrayContaining([
           expect.objectContaining({
             product_id: product.body.id,
             price: '500.00',
@@ -296,7 +300,7 @@ describe('App', () => {
           name: 'Rocketseat',
           email: 'oi@rocketseat.com.br',
         }),
-        order_products: expect.arrayContaining([
+        orders_products: expect.arrayContaining([
           expect.objectContaining({
             product_id: product.body.id,
             price: '500.00',

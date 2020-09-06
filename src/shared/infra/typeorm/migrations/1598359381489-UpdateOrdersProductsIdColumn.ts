@@ -4,7 +4,7 @@ export default class UpdateOrdersProductsIdColumn1598359381489
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.changeColumn(
-      'order_products',
+      'orders_products',
       'id',
       new TableColumn({
         name: 'id',

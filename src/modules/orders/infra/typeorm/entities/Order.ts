@@ -25,7 +25,7 @@ class Order {
   @OneToMany(() => OrdersProducts, ordersProducts => ordersProducts.order, {
     cascade: ['insert'],
   })
-  order_products: OrdersProducts[];
+  orders_products: OrdersProducts[];
 
   @CreateDateColumn()
   created_at: Date;
