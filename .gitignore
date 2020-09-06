@@ -4,6 +4,3 @@ node_modules/
 build/
 tmp/
 temp/
-
-# Type ORM
-ormconfig.json
